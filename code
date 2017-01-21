@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Stadium_Seating_MJ
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btncalc_Click(object sender, EventArgs e)
+        {
+            int soldA, soldB, soldC;
+            double revA, revB, revC,revtotal;
+            const double costA = 15, costB = 12, costc = 9;
+            try
+            {
+                soldA = int.Parse(txtClassAsold.Text);
+                soldB = int.Parse(txtClassBsold.Text);
+                soldC = int.Parse(txtClassCsold.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return;
+            }
+            revA = soldA * costA;
+            revB = soldB * costB;
+            revC = soldC * costc;
+            revtotal = revA + revB + revC;
+
+            lblClassARev.Text = revA.ToString("c");
+            lblClassBRev.Text = revB.ToString("c");
+            lblClassCRev.Text = revC.ToString("c");
+            lblTotal.Text = revtotal.ToString("c");
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtClassAsold.Text = string.Empty;
+            txtClassBsold.Text = string.Empty;
+            txtClassCsold.Text = string.Empty;
+            lblTotal.Text = string.Empty;
+            lblClassARev.Text = string.Empty;
+            lblClassBRev.Text = string.Empty;
+            lblClassCRev.Text = string.Empty;
+            txtClassAsold.Focus();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
